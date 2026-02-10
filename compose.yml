@@ -3,7 +3,7 @@ services:
     image: postgres:18-alpine
     restart: always
     environment:
-      - POSTGRES_MULTIPLE_DATABASES="${PG_DB_FL_SIMPLE_RESTAURANT_MENU}"
+      - POSTGRES_MULTIPLE_DATABASES="${PG_DB_DEV_NIL}"
       - POSTGRES_USER=${PG_USER}
       - POSTGRES_PASSWORD=${PG_PASSWORD}
     ports:
