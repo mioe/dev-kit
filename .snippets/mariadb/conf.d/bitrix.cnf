@@ -1,0 +1,26 @@
+[mysqld]
+# --- required for Bitrix ---
+sql_mode=""
+innodb_strict_mode=OFF
+transaction-isolation=READ-COMMITTED
+
+# --- charset ---
+character-set-server=utf8mb4
+collation-server=utf8mb4_unicode_ci
+
+# --- performance (sane for dev) ---
+max_allowed_packet=128M
+innodb_flush_method=O_DIRECT
+innodb_flush_log_at_trx_commit=2
+innodb_buffer_pool_size=512M
+innodb_file_per_table=1
+tmp_table_size=128M
+max_heap_table_size=128M
+table_open_cache=2048
+thread_cache_size=4
+
+[client]
+default-character-set=utf8mb4
+
+[mysql]
+default-character-set=utf8mb4
