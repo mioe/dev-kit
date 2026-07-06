@@ -33,3 +33,18 @@ services:
       - ./.snippets/mariadb/init-databases:/docker-entrypoint-initdb.d
       - ./.snippets/mariadb/conf.d:/etc/mysql/conf.d
       - ./.docker/mariadb:/var/lib/mysql
+
+  # legacy mysql - impl my prod
+  percona:
+    image: percona:5.7.43
+    platform: linux/amd64
+    restart: unless-stopped
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=${PERCONA_DATABASE}
+      - MYSQL_USER=${PERCONA_USER}
+      - MYSQL_PASSWORD=${PERCONA_PASSWORD}
+    ports:
+      - ${PERCONA_PORT}:3306
+    volumes:
+      - ./.docker/percona:/var/lib/mysql
