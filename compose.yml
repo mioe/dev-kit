@@ -21,6 +21,19 @@ services:
     volumes:
       - ./.docker/redis:/data
 
+  rustfs:
+    image: rustfs/rustfs:1.0.0
+    restart: always
+    environment:
+      - RUSTFS_ACCESS_KEY=${RUSTFS_ACCESS_KEY}
+      - RUSTFS_SECRET_KEY=${RUSTFS_SECRET_KEY}
+      - RUSTFS_CONSOLE_ENABLE=true
+    ports:
+      - ${RUSTFS_PORT}:9000
+      - ${RUSTFS_CONSOLE_PORT}:9001
+    volumes:
+      - ./.docker/rustfs:/data
+
   mariadb:
     image: mariadb:11.4
     restart: always
